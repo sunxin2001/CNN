@@ -80,33 +80,33 @@ num_classes = 6
 learning_rate = 0.001
 
 
-class ConvNet(nn.Module):
-    def __init__(self, num_classes=10):
-        super(ConvNet, self).__init__()
-        self.layer1 = nn.Sequential(
-            nn.Conv2d(1, 16, kernel_size=6, stride=2, padding=2),# the kernel/filter
-            nn.Sigmoid(),
-            nn.BatchNorm2d(16),
-            nn.ReLU(),#activation function
-            nn.MaxPool2d(kernel_size=2, stride=2))#pooling layer
-        self.layer2 = nn.Sequential(
-            nn.Conv2d(16, 32, kernel_size=6, stride=2, padding=2),
-            nn.Sigmoid(),
-            nn.BatchNorm2d(32),
-            nn.ReLU(),
-            nn.MaxPool2d(kernel_size=2, stride=2))
-        self.fc = nn.Linear(14*14*32, num_classes) #out layer
+# class ConvNet(nn.Module):
+#     def __init__(self, num_classes=10):
+#         super(ConvNet, self).__init__()
+#         self.layer1 = nn.Sequential(
+#             nn.Conv2d(1, 16, kernel_size=6, stride=2, padding=2),# the kernel/filter
+#             nn.Sigmoid(),
+#             nn.BatchNorm2d(16),
+#             nn.ReLU(),#activation function
+#             nn.MaxPool2d(kernel_size=2, stride=2))#pooling layer
+#         self.layer2 = nn.Sequential(
+#             nn.Conv2d(16, 32, kernel_size=6, stride=2, padding=2),
+#             nn.Sigmoid(),
+#             nn.BatchNorm2d(32),
+#             nn.ReLU(),
+#             nn.MaxPool2d(kernel_size=2, stride=2))
+#         self.fc = nn.Linear(14*14*32, num_classes) #out layer
         
-    def forward(self, x):
-        out = self.layer1(x)
-        out = self.layer2(out)
-        out = out.reshape(out.size(0), -1)
-        out = self.fc(out)
-        return out
-#forward propogation
-#this is a block including nerual network and forward propogation
-#if we want define a block, first we have to define the nerual network in construction function,
-# then we forward the neural network.\
+#     def forward(self, x):
+#         out = self.layer1(x)
+#         out = self.layer2(out)
+#         out = out.reshape(out.size(0), -1)
+#         out = self.fc(out)
+#         return out
+# #forward propogation
+# #this is a block including nerual network and forward propogation
+# #if we want define a block, first we have to define the nerual network in construction function,
+# # then we forward the neural network.\
  
 
 
